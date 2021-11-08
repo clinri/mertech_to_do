@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ru.clinri.mertech_to_do.entities.TaskListItem
+import ru.clinri.mertech_to_do.entities.TaskListItems
 
-@Database(entities = [TaskListItem::class], version = 1)
+@Database(entities = [TaskListItems::class], version = 1)
 abstract class MainDataBase : RoomDatabase() {
+    abstract fun getDao():Dao
 
     companion object { //все что описано сдесь без инициализации класса
         @Volatile //поле мгновенно становится доступным для всех потоков
