@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">mertech_to_do</string>
+    <string name="app_name">Task List</string>
+    <string name="addTask">addTask</string>
 </resources>
