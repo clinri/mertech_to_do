@@ -23,4 +23,4 @@ data class TaskListItems(
     @ColumnInfo(name = "complete")
     val complete: Boolean = false,
 
-    ) : Serializable
+    ): Serializable

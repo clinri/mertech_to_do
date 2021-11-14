@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D8CFCF"
     tools:context=".fragments.TaskFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcViewTask"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Note Fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>
