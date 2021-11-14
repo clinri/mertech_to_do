@@ -1,18 +1,31 @@
 package ru.clinri.mertech_to_do.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ru.clinri.mertech_to_do.R
+import androidx.fragment.app.activityViewModels
+
+import ru.clinri.mertech_to_do.activities.MainApp
 import ru.clinri.mertech_to_do.databinding.FragmentTaskBinding
+import ru.clinri.mertech_to_do.db.MainViewModel
 
 
 class TaskFragment : BaseFragment() {
     private lateinit var binding: FragmentTaskBinding
+    private val mainViewModel: MainViewModel by activityViewModels{
+        MainViewModel.MainViewModelFactory((context?.applicationContext as MainApp).database)
+    }
     override fun onClickNew() {
-        TODO("Not yet implemented")
+        //mainViewModel.insertTask()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+//        mainViewModel.allTasks.observe(this,{
+//            it
+//        })
     }
 
     override fun onCreateView(

@@ -14,5 +14,5 @@ interface Dao { // Data access object
 
     @Insert // запись
     //suspend - функции запускаются внутри Coroutines
-    suspend fun insertNote(task: TaskListItems)
+    suspend fun insertTask(task: TaskListItems)
 }
