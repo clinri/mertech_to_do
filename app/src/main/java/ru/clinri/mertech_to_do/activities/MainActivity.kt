@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import ru.clinri.mertech_to_do.R
 import ru.clinri.mertech_to_do.databinding.ActivityMainBinding
+import ru.clinri.mertech_to_do.fragments.FragmentManager
+import ru.clinri.mertech_to_do.fragments.TaskFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -12,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        FragmentManager.setFragment(TaskFragment.newInstance(),this)
         setBottomNavListener()
     }
 
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.addTask -> {
                     Log.d("MyLog", "Add task")
+
                 }
             }
             true
