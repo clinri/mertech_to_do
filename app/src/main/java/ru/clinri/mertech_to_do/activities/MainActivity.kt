@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.addTask -> {
                     Log.d("MyLog", "Add task")
-
+                    FragmentManager.currentFrag?.onClickNew()
                 }
             }
             true
