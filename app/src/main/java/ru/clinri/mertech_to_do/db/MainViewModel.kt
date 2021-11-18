@@ -13,6 +13,14 @@ class MainViewModel(dataBase: MainDataBase):ViewModel() {
         dao.insertTask(task)
     }
 
+    fun updateTask(task: TaskListItems) = viewModelScope.launch {
+        dao.updateTask(task)
+    }
+
+    fun deleteTask(id: Int) = viewModelScope.launch {
+        dao.deleteTask(id)
+    }
+
     class MainViewModelFactory(val dataBase: MainDataBase) : ViewModelProvider.Factory{
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)){

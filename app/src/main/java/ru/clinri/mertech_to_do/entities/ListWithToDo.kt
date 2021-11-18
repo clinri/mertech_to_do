@@ -21,6 +21,6 @@ data class TaskListItems(
     val deadlineDate: String,
 
     @ColumnInfo(name = "complete")
-    val complete: Boolean = false,
+    val complete: Int = 0,
 
     ): Serializable

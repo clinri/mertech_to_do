@@ -3,7 +3,6 @@ package ru.clinri.mertech_to_do.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +20,7 @@ import ru.clinri.mertech_to_do.db.TaskAdapter
 import ru.clinri.mertech_to_do.entities.TaskListItems
 
 
-class TaskFragment : BaseFragment() {
+class TaskFragment : BaseFragment(),TaskAdapter.Listener {
     private lateinit var binding: FragmentTaskBinding
     private lateinit var editLauncher: ActivityResultLauncher<Intent>
     private lateinit var adapter: TaskAdapter
@@ -54,7 +53,7 @@ class TaskFragment : BaseFragment() {
 
     private fun initRcView()=with(binding){
         rcViewTask.layoutManager = LinearLayoutManager(activity)
-        adapter = TaskAdapter()
+        adapter = TaskAdapter(this@TaskFragment)
         rcViewTask.adapter = adapter
     }
 
@@ -68,15 +67,35 @@ class TaskFragment : BaseFragment() {
         editLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             if (it.resultCode == Activity.RESULT_OK){
+                val editState = it.data?.getStringExtra(EDIT_STATE_KEY)
+                if (editState == "update"){
+                    mainViewModel.updateTask(it.data?.getSerializableExtra(NEW_TASK_KEY) as TaskListItems)
+                }else{
+                    mainViewModel.insertTask(it.data?.getSerializableExtra(NEW_TASK_KEY) as TaskListItems)
+                }
                 //Log.d("MyLog","title: ${it.data?.getStringExtra(TITLE_KEY)}")
-                mainViewModel.insertTask(it.data?.getSerializableExtra(NEW_TASK_KEY) as TaskListItems)
+
 
             }
         }
     }
 
+
+
+    override fun deleteItem(id: Int) {
+        mainViewModel.deleteTask(id)
+    }
+
+    override fun onClickItem(task: TaskListItems) {
+        val intent = Intent(activity, NewTaskActivity::class.java).apply {
+            putExtra(NEW_TASK_KEY, task)
+        }
+        editLauncher.launch(intent)
+    }
+
     companion object {
         const val NEW_TASK_KEY = "new_task_key"
+        const val EDIT_STATE_KEY = "edit_state_key"
         @JvmStatic
         fun newInstance() = TaskFragment()
     }

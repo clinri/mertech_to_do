@@ -26,6 +26,18 @@
             android:padding="5dp">
 
             <EditText
+                android:id="@+id/edTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/title_hint" />
+
+            <EditText
                 android:id="@+id/edDiscription"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -39,17 +51,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/edTitle"
                 tools:text="@string/discription_hint" />
 
-            <EditText
-                android:id="@+id/edTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/title_hint" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
